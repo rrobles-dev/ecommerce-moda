@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neo Vetro | Anteojos que unen tradición y tecnología</title>
+  <meta name="description" content="Neo Vetro: anteojos ópticos y de sol unisex con diseño de inspiración italiana y lentes de tecnología moderna. Descubre nuevos lanzamientos y los más vendidos.">
+  <meta name="theme-color" content="#1D3FBF">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- extra: tokens de marca con @theme de Tailwind v4. Crean clases como bg-vetro-azul
+       o text-vetro-purpura. Se definen una vez y se copian igual en las 5 vistas. -->
+  <style type="text/tailwindcss">
+    @theme {
+      --color-vetro-azul: #1D3FBF;
+      --color-vetro-purpura: #6B21A8;
+      --color-vetro-noche: #0B1026;
+      --color-vetro-marfil: #F7F5F0;
+      --color-vetro-cian: #22D3EE;
+    }
+  </style>
+
+  <!-- Schema.org: identidad de la marca para buscadores. Reemplaza la URL cuando publiques en GitHub Pages. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Neo Vetro",
+    "url": "https://rrobles-dev.github.io/ecommerce-moda/",
+    "logo": "https://rrobles-dev.github.io/ecommerce-moda/assets/img/logo.svg",
+    "description": "Marca de anteojos unisex que une tradición artesanal italiana con tecnología moderna en lentes.",
+    "slogan": "Tradizione che vede il futuro",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "ciao@neovetro.example",
+      "availableLanguage": ["es", "it"]
+    }
+  }
+  </script>
+</head>
+<body class="bg-vetro-marfil text-vetro-noche antialiased">
+
+  <!-- ========== NAVBAR (copiar idéntico en las 5 vistas) ========== -->
+  <header class="bg-white/90 border-b border-slate-200 sticky top-0 z-10 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center gap-3 md:gap-6">
+      <a href="index.html" class="flex items-center gap-2 font-black tracking-tight text-xl" aria-label="Neo Vetro, ir al inicio">
+        <img src="assets/img/logo.svg" alt="" width="36" height="36">
+        <span>Neo<span class="text-vetro-purpura">Vetro</span></span>
+      </a>
+
+      <form role="search" action="catalogo.html" class="order-3 w-full md:order-none md:w-auto md:flex-1">
+        <label for="buscar" class="sr-only">Buscar anteojos</label>
+        <input id="buscar" name="q" type="search" placeholder="Cerca… busca monturas, lentes de sol"
+               class="w-full rounded-full border border-slate-300 bg-white px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-vetro-azul">
+      </form>
+
+      <nav aria-label="Principal" class="ml-auto flex items-center gap-4 text-sm font-medium">
+        <a href="catalogo.html" class="hover:text-vetro-azul">Catálogo</a>
+        <a href="carrito.html" class="hover:text-vetro-azul">Carrito (3)</a>
+        <!-- Menú de cuenta sin JS: <details> abre y cierra de forma nativa -->
+        <details class="relative">
+          <summary class="cursor-pointer list-none rounded-full bg-vetro-noche px-3 py-1.5 text-white">Mi cuenta</summary>
+          <ul class="absolute right-0 mt-2 w-44 rounded-xl border border-slate-200 bg-white p-2 shadow-lg">
+            <li><a href="#" class="block rounded-lg px-3 py-2 hover:bg-vetro-marfil">Mi perfil</a></li>
+            <li><a href="#" class="block rounded-lg px-3 py-2 hover:bg-vetro-marfil">Mis pedidos</a></li>
+            <li><a href="#" class="block rounded-lg px-3 py-2 hover:bg-vetro-marfil">Cerrar sesión</a></li>
+          </ul>
+        </details>
+      </nav>
+    </div>
+  </header>
+  <!-- ========== /NAVBAR ========== -->
+
+  <main>
+    <!-- HERO: campaña destacada -->
+    <section class="bg-linear-to-br from-vetro-azul via-vetro-purpura to-vetro-noche text-white">
+      <div class="max-w-6xl mx-auto px-4 py-14 md:py-20 grid gap-10 md:grid-cols-2 items-center">
+        <div>
+          <p class="uppercase tracking-[0.3em] text-sm text-vetro-cian">Collezione Luce 2026</p>
+          <h1 class="mt-3 text-4xl md:text-6xl font-black tracking-tight leading-none">Tradición que mira al futuro</h1>
+          <p class="mt-5 max-w-md text-lg text-white/85">Monturas de acetato hechas a mano, con lentes que filtran luz azul y se adaptan al sol.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="catalogo.html" class="rounded-full bg-vetro-cian px-6 py-3 font-semibold text-vetro-noche hover:bg-white">Ver colección</a>
+            <a href="producto.html" class="rounded-full border border-white/60 px-6 py-3 font-semibold hover:bg-white/10">Descubre Pilota</a>
+          </div>
+        </div>
+        <!-- Imagen principal: SIN lazy y con fetchpriority alto porque es el LCP (lo primero grande que se pinta) -->
+        <img src="assets/img/montura-aviador.svg" alt="Anteojos Pilota de montura aviador con lentes en tono cian"
+             width="400" height="300" fetchpriority="high"
+             class="w-full rounded-3xl shadow-2xl ring-1 ring-white/20">
+      </div>
+    </section>
+
+    <!-- NUEVOS LANZAMIENTOS: listado horizontal con scroll interno (la página no se desborda) -->
+    <section aria-labelledby="titulo-nuevos" class="max-w-6xl mx-auto px-4 py-12">
+      <p class="text-sm uppercase tracking-widest text-vetro-purpura">Nuovi arrivi</p>
+      <h2 id="titulo-nuevos" class="text-2xl md:text-3xl font-black tracking-tight">Nuevos lanzamientos</h2>
+      <ul class="mt-6 flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4">
+        <li class="snap-start shrink-0 w-64">
+          <article class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 overflow-hidden">
+            <a href="producto.html">
+              <img src="assets/img/montura-redonda.svg" alt="Montura redonda Tondo en negro" width="400" height="300" loading="lazy" class="w-full">
+              <div class="p-4">
+                <h3 class="font-bold">Tondo</h3>
+                <p class="text-sm text-slate-600">Óptico · Acetato</p>
+                <p class="mt-2 font-semibold text-vetro-azul">$89.990</p>
+              </div>
+            </a>
+          </article>
+        </li>
+        <li class="snap-start shrink-0 w-64">
+          <article class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 overflow-hidden">
+            <a href="producto.html">
+              <img src="assets/img/montura-cuadrada.svg" alt="Montura cuadrada Quadro en azul" width="400" height="300" loading="lazy" class="w-full">
+              <div class="p-4">
+                <h3 class="font-bold">Quadro</h3>
+                <p class="text-sm text-slate-600">Luz azul · Acetato</p>
+                <p class="mt-2 font-semibold text-vetro-azul">$94.990</p>
+              </div>
+            </a>
+          </article>
+        </li>
+        <li class="snap-start shrink-0 w-64">
+          <article class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 overflow-hidden">
+            <a href="producto.html">
+              <img src="assets/img/montura-cateye.svg" alt="Montura ojo de gato Gatta en púrpura" width="400" height="300" loading="lazy" class="w-full">
+              <div class="p-4">
+                <h3 class="font-bold">Gatta</h3>
+                <p class="text-sm text-slate-600">Sol · Polarizado</p>
+                <p class="mt-2 font-semibold text-vetro-azul">$99.990</p>
+              </div>
+            </a>
+          </article>
+        </li>
+        <li class="snap-start shrink-0 w-64">
+          <article class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 overflow-hidden">
+            <a href="producto.html">
+              <img src="assets/img/montura-aviador.svg" alt="Montura aviador Pilota con lentes cian" width="400" height="300" loading="lazy" class="w-full">
+              <div class="p-4">
+                <h3 class="font-bold">Pilota</h3>
+                <p class="text-sm text-slate-600">Sol · Titanio</p>
+                <p class="mt-2 font-semibold text-vetro-azul">$119.990</p>
+              </div>
+            </a>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <!-- MÁS VENDIDOS: misma estructura de card -->
+    <section aria-labelledby="titulo-vendidos" class="bg-white">
+      <div class="max-w-6xl mx-auto px-4 py-12">
+        <p class="text-sm uppercase tracking-widest text-vetro-purpura">I più amati</p>
+        <h2 id="titulo-vendidos" class="text-2xl md:text-3xl font-black tracking-tight">Más vendidos</h2>
+        <ul class="mt-6 flex gap-5 overflow-x-auto snap-x snap-mandatory pb-4">
+          <li class="snap-start shrink-0 w-64">
+            <article class="rounded-2xl bg-vetro-marfil ring-1 ring-slate-200 overflow-hidden">
+              <a href="producto.html">
+                <img src="assets/img/montura-cuadrada.svg" alt="Montura cuadrada Milano en azul" width="400" height="300" loading="lazy" class="w-full">
+                <div class="p-4">
+                  <h3 class="font-bold">Milano</h3>
+                  <p class="text-sm text-slate-600">Óptico · Acetato</p>
+                  <p class="mt-2 font-semibold text-vetro-azul">$84.990</p>
+                </div>
+              </a>
+            </article>
+          </li>
+          <li class="snap-start shrink-0 w-64">
+            <article class="rounded-2xl bg-vetro-marfil ring-1 ring-slate-200 overflow-hidden">
+              <a href="producto.html">
+                <img src="assets/img/montura-redonda.svg" alt="Montura redonda Luna en negro" width="400" height="300" loading="lazy" class="w-full">
+                <div class="p-4">
+                  <h3 class="font-bold">Luna</h3>
+                  <p class="text-sm text-slate-600">Luz azul · Metal</p>
+                  <p class="mt-2 font-semibold text-vetro-azul">$79.990</p>
+                </div>
+              </a>
+            </article>
+          </li>
+          <li class="snap-start shrink-0 w-64">
+            <article class="rounded-2xl bg-vetro-marfil ring-1 ring-slate-200 overflow-hidden">
+              <a href="producto.html">
+                <img src="assets/img/montura-aviador.svg" alt="Montura aviador Vento con lentes cian" width="400" height="300" loading="lazy" class="w-full">
+                <div class="p-4">
+                  <h3 class="font-bold">Vento</h3>
+                  <p class="text-sm text-slate-600">Sol · Fotocromático</p>
+                  <p class="mt-2 font-semibold text-vetro-azul">$109.990</p>
+                </div>
+              </a>
+            </article>
+          </li>
+          <li class="snap-start shrink-0 w-64">
+            <article class="rounded-2xl bg-vetro-marfil ring-1 ring-slate-200 overflow-hidden">
+              <a href="producto.html">
+                <img src="assets/img/montura-cateye.svg" alt="Montura ojo de gato Bella en púrpura" width="400" height="300" loading="lazy" class="w-full">
+                <div class="p-4">
+                  <h3 class="font-bold">Bella</h3>
+                  <p class="text-sm text-slate-600">Óptico · Acetato</p>
+                  <p class="mt-2 font-semibold text-vetro-azul">$89.990</p>
+                </div>
+              </a>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER (copiar idéntico en las 5 vistas) ========== -->
+  <footer class="bg-vetro-noche text-white/80">
+    <div class="max-w-6xl mx-auto px-4 py-12 grid gap-8 sm:grid-cols-3">
+      <section aria-labelledby="footer-categorias">
+        <h2 id="footer-categorias" class="font-bold text-white">Categorías</h2>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="catalogo.html" class="hover:text-vetro-cian">Anteojos ópticos</a></li>
+          <li><a href="catalogo.html" class="hover:text-vetro-cian">Anteojos de sol</a></li>
+          <li><a href="catalogo.html" class="hover:text-vetro-cian">Luz azul</a></li>
+          <li><a href="catalogo.html" class="hover:text-vetro-cian">Accesorios</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="footer-legal">
+        <h2 id="footer-legal" class="font-bold text-white">Legal</h2>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="#" class="hover:text-vetro-cian">Términos y condiciones</a></li>
+          <li><a href="#" class="hover:text-vetro-cian">Política de privacidad</a></li>
+          <li><a href="#" class="hover:text-vetro-cian">Sobre Neo Vetro</a></li>
+        </ul>
+      </section>
+      <section aria-labelledby="footer-contacto">
+        <h2 id="footer-contacto" class="font-bold text-white">Contacto</h2>
+        <address class="mt-3 space-y-2 text-sm not-italic">
+          <p><a href="mailto:ciao@neovetro.example" class="hover:text-vetro-cian">ciao@neovetro.example</a></p>
+          <p>Milano · Santiago</p>
+        </address>
+      </section>
+    </div>
+    <p class="border-t border-white/10 py-4 text-center text-xs">© 2026 Neo Vetro · Fatto con passione</p>
+  </footer>
+  <!-- ========== /FOOTER ========== -->
+
+</body>
+</html>
