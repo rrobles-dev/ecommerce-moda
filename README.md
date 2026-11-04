@@ -44,4 +44,19 @@ Una rama por vista (`feature/home`, `feature/catalogo`, `feature/producto`, `fea
 
 Resultado de PageSpeed Insights sobre la URL publicada:
 
-![Resultado de PageSpeed](pagespeed-result.png)
+![Resultado de PageSpeed](pagespeed-escritorio-result.png, pagespeed-mobile-result.png)
+| Dispositivo | Rendimiento | Accesibilidad | Recomendaciones | SEO |
+|---|---|---|---|---|
+| Escritorio | 100 | 100 | 100 | 100 |
+| Móvil | 96 | 100 | 100 | 100 |
+
+<table>
+  <tr>
+    <th>Escritorio</th>
+    <th>Móvil</th>
+  </tr>
+  <tr>
+    <td><img src="pagespeed-escritorio-result.png" alt="PageSpeed escritorio: 100 en rendimiento, accesibilidad, recomendaciones y SEO" width="400"></td>
+    <td><img src="pagespeed-mobile-result.png" alt="PageSpeed móvil: 96 en rendimiento y 100 en accesibilidad, recomendaciones y SEO" width="400"></td>
+  </tr>
+</table>
