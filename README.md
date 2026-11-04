@@ -1,41 +1,62 @@
-# HTML Hello
+# Neo Vetro · Prototipo de e-commerce
 
-The most basic boilerplate for any 4Geeks Academy student, start your very first website from scratch.
+Prototipo visual y responsive de la tienda online de **Neo Vetro**, una marca de anteojos unisex con sede en París e inspiración de diseño italiana. Proyecto del bootcamp 4Geeks Academy (módulo *Command Line, Git and GitHub*).
 
-> There is a video tutorial on [how to use this template to create your very first website here](https://youtu.be/dfbDCMu_p-0).
+🔗 **Sitio publicado:** https://rrobles-dev.github.io/ecommerce-moda/
 
-## What to do next?
+## Vistas
 
-Create an `index.html` file with the [basic HTML structure](http://4geeks.com/lesson/what-is-html-learn-html#page-structure) and see it live by running a web-server using the following command:
+| Vista | Archivo | Contenido |
+|---|---|---|
+| Home | `index.html` | Navbar (logo, búsqueda, menú de cuenta), hero de campaña, *Nuevos lanzamientos*, *Más vendidos*, footer |
+| Catálogo | `catalogo.html` | Filtros por categoría y talla de montura, grilla 4×5 (20 productos) |
+| Producto | `producto.html` | Dos columnas (imagen + datos: nombre, código, talla, precio, cantidad, *Agregar al carrito*), descripción con materiales y uso recomendado |
+| Carrito | `carrito.html` | 3 productos de ejemplo (miniatura, precio unitario, cantidad, total), resumen con subtotal, impuestos y total, botón *Comprar* |
+| Checkout | `checkout.html` | Flujo en 3 pasos: datos personales, dirección de entrega y pago con tarjeta |
+
+## Decisiones
+
+- **Producto:** la marca es de anteojos, un accesorio de moda. Cada requisito del enunciado tiene su equivalente: la *talla* es el ancho de la montura (S/M/L) y las categorías son ópticos, sol, luz azul y accesorios.
+- **Mercado:** la tienda vende en Chile, así que los precios están en CLP con IVA incluido. El carrito desglosa *subtotal neto + IVA 19% = total*.
+- **Navbar y footer reutilizados:** sin JavaScript no hay *includes*, así que son bloques idénticos en las 5 vistas, marcados con comentarios `NAVBAR` y `FOOTER`.
+- **Sin JavaScript propio:** el menú de cuenta usa `<details>` nativo; filtros y formularios son HTML.
+- **Checkout seguro por diseño:** los campos no tienen `name`, así que el prototipo no envía datos. En producción, la tarjeta la captura la pasarela de pago, nunca nuestro servidor.
+- **Imágenes:** ilustraciones SVG propias (menos de 1 KB cada una, sin licencias). La imagen principal carga con prioridad y el resto en diferido (`loading="lazy"`).
+- **SEO:** HTML semántico, un `h1` por vista, meta descriptions y Schema.org (`Organization` en la home, `Product` en la vista de producto).
+
+## Tecnologías
+
+HTML5 · Tailwind CSS v4 (CDN) · Schema.org (JSON-LD) · Git y GitHub · GitHub Pages
+
+## Cómo ejecutarlo en local
 
 ```bash
-$ pip3 install flask && python3 server.py
+pip3 install flask && python3 server.py
 ```
 
-- You can create as many HTML files as you want.
-- You can also create CSS files and import them into your website using a `<link>` tag placed between the `<head></head>` tags, like this:
+Abre http://localhost:3000
 
-```html
-<head>
-  ...
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  ...
-</head>
-```
+## Flujo de trabajo con Git
 
-- If you want to use Tailwind CSS, add it optionally via the official Tailwind CSS v4 CDN inside the same `<head>`:
+Una rama por vista (`feature/home`, `feature/catalogo`, `feature/producto`, `feature/carrito`, `feature/checkout`). Cada una se integró a `main` mediante un pull request, después de actualizarla con `git pull origin main`.
 
-```html
-<head>
-  ...
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  ...
-</head>
-```
+## Rendimiento
 
-### Contributors
+Resultado de PageSpeed Insights sobre la URL publicada:
 
-This template was built as part of the [Full Stack Developer course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer) at [4Geeks Academy Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and [many other contributors](https://github.com/4GeeksAcademy/html-hello/graphs/contributors).
+![Resultado de PageSpeed](pagespeed-escritorio-result.png, pagespeed-mobile-result.png)
+| Dispositivo | Rendimiento | Accesibilidad | Recomendaciones | SEO |
+|---|---|---|---|---|
+| Escritorio | 100 | 100 | 100 | 100 |
+| Móvil | 96 | 100 | 100 | 100 |
 
-You can find other templates and resources like this at the [school's GitHub page](https://github.com/4geeksacademy/).
+<table>
+  <tr>
+    <th>Escritorio</th>
+    <th>Móvil</th>
+  </tr>
+  <tr>
+    <td><img src="pagespeed-escritorio-result.png" alt="PageSpeed escritorio: 100 en rendimiento, accesibilidad, recomendaciones y SEO" width="400"></td>
+    <td><img src="pagespeed-mobile-result.png" alt="PageSpeed móvil: 96 en rendimiento y 100 en accesibilidad, recomendaciones y SEO" width="400"></td>
+  </tr>
+</table>
